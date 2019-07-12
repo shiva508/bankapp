@@ -20,7 +20,6 @@ public class BankWebConfiguration extends WebMvcConfigurerAdapter {
 		viewResolver.setViewClass(JstlView.class);
 		viewResolver.setPrefix("/WEB-INF/views/");
 		viewResolver.setSuffix(".jsp");
-		viewResolver.setOrder(0);
 		return viewResolver;
 	}
 

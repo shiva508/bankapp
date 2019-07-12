@@ -16,9 +16,8 @@
     <spring:url var="select2minjs" value="components/js/jquery.select2.min.js"></spring:url>
     <spring:url var="sweetalertminjs" value="components/js/sweetalert.min.js"></spring:url>
 	
-	<spring:url var="bootstrap-themecss" value="components/css/bootstrap-theme.css"></spring:url>
-	<spring:url var="bootstrap-themecssmap" value="components/css/bootstrap-theme.css.map"></spring:url>
-	<spring:url var="bootstrap-thememincss" value="components/css/bootstrap-theme.min.css"></spring:url>
+	<spring:url var="bootstrapthemecss" value="components/css/bootstrap-theme.css"></spring:url>
+	<spring:url var="bootstrapthememincss" value="components/css/bootstrap-theme.min.css"></spring:url>
 	<spring:url var="bootstrapcss" value="components/css/bootstrap.css"></spring:url>
 	<spring:url var="bootstrapcssmap" value="components/css/bootstrap.css.maps"></spring:url>
 	<spring:url var="bootstrapmincss" value="components/css/bootstrap.min.css"></spring:url>
@@ -34,24 +33,26 @@
 <body>
 ${HI}
 </body>
+<link href="${bootstrapthemecss}" rel="stylesheet" type="text/css"/>
+<link href="${bootstrapthemecssmap}" rel="stylesheet" type="text/css"/>
+<link href="${bootstrapthememincss}" rel="stylesheet" type="text/css"/>
+<link href="${bootstrapcss}" rel="stylesheet" type="text/css"/>
+<link href="${bootstrapmincss}" rel="stylesheet" type="text/css"/>
+<link href="${dataTablesbootstrapcss}" rel="stylesheet" type="text/css"/>
+<link href="${datepickercss}" rel="stylesheet" type="text/css"/>
+<link href="${select2mincss}" rel="stylesheet" type="text/css"/> 
+
+
 <script src="${jquery}" type="text/javascript"></script>
 <script src="${bootstrapminjs}" type="text/javascript"></script>
 <script src="${bootstrapjs}"type="text/javascript"></script>
 <script src="${bootstrapdatepickerjs}" type="text/javascript"></script>
 <script src="${jqueryuijs}" type="text/javascript"></script>
 <script src="${jquerydataTablesminjs}"type="text/javascript"></script>
-<script src="${select2minjs}" type="text/javascript"></script>
-<script src="${sweetalertminjs}"type="text/javascript"></script>
+ <script src="${select2minjs}" type="text/javascript"></script>
+<script src="${sweetalertminjs}"type="text/javascript"></script> 
 
-<%-- <link href="${bootstrap-themecss}" rel="stylesheet" type="text/css"/>
-<link href="${bootstrap-themecssmap}" rel="stylesheet" type="text/css"/>
-<link href="${bootstrap-thememincss}" rel="stylesheet" type="text/css"/>
-<link href="${bootstrapcss}" rel="stylesheet" type="text/css"/>
-<link href="${bootstrapcssmap}" rel="stylesheet" type="text/css"/>
-<link href="${bootstrapmincss}" rel="stylesheet" type="text/css"/>
-<link href="${dataTablesbootstrapcss}" rel="stylesheet" type="text/css"/>
-<link href="${datepickercss}" rel="stylesheet" type="text/css"/>
-<link href="${select2mincss}" rel="stylesheet" type="text/css"/> --%>
+
 <script>
 $( document ).ready(function() {
 	/* swal("KO") */

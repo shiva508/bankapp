@@ -2,6 +2,9 @@ package com.bank.controller;
 
 import javax.validation.Valid;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,8 +17,12 @@ import com.bank.model.Registration;
 
 @Controller
 public class LoginController {
+	@Autowired
+	private SessionFactory  sessionFactory;
 	@GetMapping(value = "/")
 	public String welcomePage(Model model) {
+		Session session= sessionFactory.getCurrentSession();
+		System.out.println("das"+session.isConnected());
 		Registration registration = new Registration();
 		model.addAttribute("registration", registration);
 		return "welcome";
@@ -31,6 +38,8 @@ public class LoginController {
 		else {
 			view= "registrationConform";
 		}
+		Session session= sessionFactory.getCurrentSession();
+		System.out.println("das"+session.isConnected());
 		return view; 
 	}
 

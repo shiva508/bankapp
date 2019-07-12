@@ -8,7 +8,23 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page isELIgnored="false" %>
     <spring:url var="jquery" value="components/js/jquery.min.js"></spring:url>
-  
+    <spring:url var="bootstrapminjs" value="components/js/bootstrap.min.js"></spring:url>
+    <spring:url var="bootstrapjs" value="components/js/bootstrap.js"></spring:url>
+    <spring:url var="bootstrapdatepickerjs" value="components/js/bootstrap-datepicker.js"></spring:url>
+    <spring:url var="jqueryuijs" value="components/js/jquery-ui.js"></spring:url>
+    <spring:url var="jquerydataTablesminjs" value="components/js/jquery.dataTables.min.js"></spring:url>
+    <spring:url var="select2minjs" value="components/js/jquery.select2.min.js"></spring:url>
+    <spring:url var="sweetalertminjs" value="components/js/sweetalert.min.js"></spring:url>
+	
+	<spring:url var="bootstrap-themecss" value="components/css/bootstrap-theme.css"></spring:url>
+	<spring:url var="bootstrap-themecssmap" value="components/css/bootstrap-theme.css.map"></spring:url>
+	<spring:url var="bootstrap-thememincss" value="components/css/bootstrap-theme.min.css"></spring:url>
+	<spring:url var="bootstrapcss" value="components/css/bootstrap.css"></spring:url>
+	<spring:url var="bootstrapcssmap" value="components/css/bootstrap.css.maps"></spring:url>
+	<spring:url var="bootstrapmincss" value="components/css/bootstrap.min.css"></spring:url>
+	<spring:url var="dataTablesbootstrapcss" value="components/css/dataTables.bootstrap.css"></spring:url>
+	<spring:url var="datepickercss" value="components/css/datepicker.css"></spring:url>
+	<spring:url var="select2mincss" value="components/css/select2.min.css"></spring:url>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,11 +34,28 @@
 <body>
 ${HI}
 </body>
-<script src="components/js/jquery.min.js" type="text/javascript"></script>
+<script src="${jquery}" type="text/javascript"></script>
+<script src="${bootstrapminjs}" type="text/javascript"></script>
+<script src="${bootstrapjs}"type="text/javascript"></script>
+<script src="${bootstrapdatepickerjs}" type="text/javascript"></script>
+<script src="${jqueryuijs}" type="text/javascript"></script>
+<script src="${jquerydataTablesminjs}"type="text/javascript"></script>
+<script src="${select2minjs}" type="text/javascript"></script>
+<script src="${sweetalertminjs}"type="text/javascript"></script>
+
+<%-- <link href="${bootstrap-themecss}" rel="stylesheet" type="text/css"/>
+<link href="${bootstrap-themecssmap}" rel="stylesheet" type="text/css"/>
+<link href="${bootstrap-thememincss}" rel="stylesheet" type="text/css"/>
+<link href="${bootstrapcss}" rel="stylesheet" type="text/css"/>
+<link href="${bootstrapcssmap}" rel="stylesheet" type="text/css"/>
+<link href="${bootstrapmincss}" rel="stylesheet" type="text/css"/>
+<link href="${dataTablesbootstrapcss}" rel="stylesheet" type="text/css"/>
+<link href="${datepickercss}" rel="stylesheet" type="text/css"/>
+<link href="${select2mincss}" rel="stylesheet" type="text/css"/> --%>
 <script>
 $( document ).ready(function() {
-   alert("HI")
+	/* swal("KO") */
+ /*   alert("HI") */
 });
 </script>
-
 </html>

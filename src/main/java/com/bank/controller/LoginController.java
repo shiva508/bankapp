@@ -21,7 +21,7 @@ public class LoginController {
 	private SessionFactory  sessionFactory;
 	@GetMapping(value = "/")
 	public String welcomePage(Model model) {
-		Session session= sessionFactory.getCurrentSession();
+		Session session= sessionFactory.openSession();
 		System.out.println("das"+session.isConnected());
 		Registration registration = new Registration();
 		model.addAttribute("registration", registration);

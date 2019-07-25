@@ -18,16 +18,17 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"com.bank"})
+@ComponentScan(basePackages = {"com.bank.config"})
 @PropertySource(value = {"classpath:application.properties"})
-public class PersistanceJpaConfig {
+public class HibernateConfig {
 	@Autowired
 	private Environment env;
 
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName(env.getProperty("mysql.driverClassName"));
+		System.out.println(env.getProperty("mysql.driverClassName"));
+		dataSource.setDriverClassName("");
 		dataSource.setUrl(env.getProperty("mysql.url"));
 		dataSource.setUsername(env.getProperty("mysql.username"));
 		dataSource.setPassword(env.getProperty("mysql.password"));
@@ -38,7 +39,7 @@ public class PersistanceJpaConfig {
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
-		sessionFactory.setPackagesToScan(new String[] { "com.bank.model" });
+		sessionFactory.setPackagesToScan(new String[] {"com.bank.model"});
 		sessionFactory.setHibernateProperties(hibernateProperties());
 		return sessionFactory;
 	}

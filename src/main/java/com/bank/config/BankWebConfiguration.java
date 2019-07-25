@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.bank.config")
+@ComponentScan(basePackages = "com.bank")
 public class BankWebConfiguration extends WebMvcConfigurerAdapter {
 	@Bean
 	public ViewResolver viewResolver() {

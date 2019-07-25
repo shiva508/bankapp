@@ -1,0 +1,6 @@
+com\bank\controller\LoginController.class
+com\bank\formmodel\Login.class
+com\bank\config\BankWebConfiguration.class
+com\bank\config\HibernateConfig.class
+com\bank\config\BankInitializer.class
+com\bank\model\Registration.class

@@ -17,12 +17,9 @@ import com.bank.model.Registration;
 
 @Controller
 public class LoginController {
-	@Autowired
-	private SessionFactory  sessionFactory;
+	
 	@GetMapping(value = "/")
 	public String welcomePage(Model model) {
-		Session session= sessionFactory.openSession();
-		System.out.println("das"+session.isConnected());
 		Registration registration = new Registration();
 		model.addAttribute("registration", registration);
 		return "welcome";
@@ -38,8 +35,6 @@ public class LoginController {
 		else {
 			view= "registrationConform";
 		}
-		Session session= sessionFactory.getCurrentSession();
-		System.out.println("das"+session.isConnected());
 		return view; 
 	}
 
@@ -51,5 +46,9 @@ public class LoginController {
 	public String userLogin(@ModelAttribute("login")Login login) {
 		
 		return "";
+	}
+	@GetMapping("/myform")
+	public String myform() {
+		return "MyForm";
 	}
 }

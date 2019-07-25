@@ -6,7 +6,7 @@ public class BankInitializer extends AbstractAnnotationConfigDispatcherServletIn
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class[] {BankWebConfiguration.class,HibernateConfig.class};
+		return new Class[] {BankWebConfiguration.class};
 	}
 
 	@Override

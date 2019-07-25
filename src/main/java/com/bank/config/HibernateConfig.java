@@ -2,9 +2,9 @@ package com.bank.config;
 
 import java.util.Properties;
 
+
 import javax.sql.DataSource;
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"com.bank.config"})
+@ComponentScan(basePackages = {"com.bank"})
 @PropertySource(value = {"classpath:application.properties"})
 public class HibernateConfig {
 	@Autowired
@@ -27,8 +27,7 @@ public class HibernateConfig {
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		System.out.println(env.getProperty("mysql.driverClassName"));
-		dataSource.setDriverClassName("");
+		dataSource.setDriverClassName(env.getProperty("mysql.driverClassName"));
 		dataSource.setUrl(env.getProperty("mysql.url"));
 		dataSource.setUsername(env.getProperty("mysql.username"));
 		dataSource.setPassword(env.getProperty("mysql.password"));
@@ -49,14 +48,14 @@ public class HibernateConfig {
 		properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
 		properties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
 		properties.put("hibernate.format_sql", env.getRequiredProperty("hibernate.format_sql"));
-		properties.put("hibernate.hbm2ddl.auto", env.getRequiredProperty("hibernate.hbm2ddl.auto"));
+		//properties.put("hibernate.hbm2ddl.auto", env.getRequiredProperty("hibernate.hbm2ddl.auto"));
 		return properties;
 	}
 	@Bean
 	@Autowired
-	public HibernateTransactionManager transactionManager(SessionFactory s) {
+	public HibernateTransactionManager transactionManager() {
 		HibernateTransactionManager transactionManager=new HibernateTransactionManager();
-		transactionManager.setSessionFactory(s);
+		transactionManager.setSessionFactory(sessionFactory().getObject());
 		return transactionManager;
 	}
 

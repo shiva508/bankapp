@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
@@ -18,7 +19,7 @@ public class Registration {
 	private Integer userId;
 
 	@NotEmpty(message = "Con not be empty")
-
+	/* @Size(min = 1) */
 	private String firstName;
 	private String lastName;
 

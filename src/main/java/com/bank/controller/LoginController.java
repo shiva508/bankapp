@@ -22,9 +22,11 @@ public class LoginController {
 	
 	@GetMapping(value = "/")
 	public String welcomePage(Model model) {
-		Registration registration = new Registration();
-		model.addAttribute("registration", registration);
-		return "welcome";
+		/*
+		 * Registration registration = new Registration();
+		 * model.addAttribute("registration", registration);
+		 */
+		return "MyForm";
 	}
 
 	@PostMapping("/formregistration")
@@ -42,15 +44,11 @@ public class LoginController {
 		return view; 
 	}
 
-	@GetMapping("/login")
+	@GetMapping("/customlogin")
 	public String loginpage() {
 		return "login";
 	}
-	@PostMapping("login")
-	public String userLogin(@ModelAttribute("login")Login login) {
-		
-		return "";
-	}
+	
 	@GetMapping("/myform")
 	public String myform() {
 		return "MyForm";

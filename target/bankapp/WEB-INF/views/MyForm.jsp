@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="" method="POST">
+<form action="/bankapp/fromexp" method="GET">
 <label>First Name</label>
-<input type="text">
+<input type="text" name="myname">
 <input type="submit" >
 </form>
 </body>

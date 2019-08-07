@@ -44,7 +44,11 @@ public class LoginController {
 		model.addAttribute("registration",registrationService.getUserByUserId(userid));
 		return "updateuser";
 	}
-
+	@PostMapping("/updateUser")
+	public String updateUser(@ModelAttribute("registration") RegistrationForm registration, Model model ) {
+		registrationService.updateUser(registration);
+		return "redirect:/users";
+	}
 	@PostMapping("/formregistration")
 	public String registration(@Valid @ModelAttribute("registration") RegistrationForm registration, Model model,
 			BindingResult result) {

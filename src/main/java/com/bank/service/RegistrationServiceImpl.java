@@ -43,8 +43,9 @@ public class RegistrationServiceImpl implements RegistrationService {
 
 	@Transactional
 	public void updateUser(RegistrationForm registrationForm) {
-		Registration registration=formDomineMapperfaced.map(registrationForm, Registration.class);
-		registrationDao.updateUser(registration);
+		Registration registration=registrationDao.getUserByUserId(registrationForm.getUserId());
+		formDomineMapperfaced.map(registrationForm, registration);
+		//registrationDao.updateUser(registration);
 	}
 
 	@Transactional

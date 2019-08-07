@@ -1,4 +1,4 @@
-package com.bank.controller;
+package com.bank.config;
 
 import com.bank.formmodel.RegistrationForm;
 import com.bank.model.Registration;

@@ -4,7 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="security"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
@@ -56,33 +57,45 @@
 <link href="${select2mincss}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-        <th>update</th>
-        <th>Delete</th>
-        <th>View</th>
-      </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${users }" var="user">
-    <tr>
-        <td>${user.firstName}</td>
-        <td>${user.lastName}</td>
-        <td>${user.phoneNumber}</td>
-        <td><a href="${pageContext.request.contextPath}/user/${user.userId}">UPDATE</a> </td>
-        <td><a href="${pageContext.request.contextPath}/user/${user.userId}">DELETE</a> </td>
-        <td><a href="${pageContext.request.contextPath}/user/${user.userId}">VIEW</a> </td>
-      </tr>
-    
-    </c:forEach>
-      
-     
-    </tbody>
-  </table>
+	<jsp:include page="header.jsp" flush="true"></jsp:include>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>update</th>
+				<security:authorize access="hasAnyRole('Admin')">
+					<th>Delete</th>
+				</security:authorize>
+
+				<th>View</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${users }" var="user">
+				<tr>
+					<td>${user.firstName}</td>
+					<td>${user.lastName}</td>
+					<td>${user.phoneNumber}</td>
+					<td><a
+						href="${pageContext.request.contextPath}/user/${user.userId}">UPDATE</a>
+					</td>
+					<security:authorize access="hasAnyRole('Admin')">
+						<td><a
+							href="${pageContext.request.contextPath}/deleteuser/${user.userId}">DELETE</a>
+						</td>
+					</security:authorize>
+					<td><a
+						href="${pageContext.request.contextPath}/viewuser/${user.userId}">VIEW</a>
+					</td>
+				</tr>
+
+			</c:forEach>
+
+
+		</tbody>
+	</table>
 
 </body>
 </html>

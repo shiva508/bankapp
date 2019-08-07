@@ -56,6 +56,7 @@
 <link href="${select2mincss}" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<jsp:include page="header.jsp" flush="true"></jsp:include>
 <security:authorize access="hasAnyRole('Admin')">
 <p>I AM ADMIN</p>
 </security:authorize>

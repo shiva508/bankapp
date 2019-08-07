@@ -42,15 +42,15 @@ public class LoginController {
 		model.addAttribute("registration",registrationService.getUserByUserId(userid));
 		return "updateuser";
 	}
-	@DeleteMapping("/user/{userid}")
+	@GetMapping("/deleteuser/{userid}")
 	public String deleteUser(@PathVariable("userid")Integer userid,Model model) {
 		registrationService.deleteUser(userid);
-		return "updateuser";	
+		return "redirect:/users";	
 	}
-	@GetMapping("/user/{userid}")
+	@GetMapping("/viewuser/{userid}")
 	public String viewUser(@PathVariable("userid")Integer userid,Model model) {
-		model.addAttribute("registration",registrationService.getUserByUserId(userid));
-		return "updateuser";	
+		model.addAttribute("user",registrationService.getUserByUserId(userid));
+		return "viewUser";	
 	}
 	@PostMapping("/updateUser")
 	public String updateUser(@ModelAttribute("registration") RegistrationForm registration, Model model ) {

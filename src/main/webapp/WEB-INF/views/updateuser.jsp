@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%-- <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %> --%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page isELIgnored="false"%>
 
@@ -58,7 +58,9 @@
 <link href="${select2mincss}" rel="stylesheet" type="text/css" />
 </head>
 <body>
+	<jsp:include page="header.jsp" flush="true"></jsp:include>
 	<div class="container">
+
 		<div class="row">
 			<h1>Update user</h1>
 		</div>
@@ -168,12 +170,6 @@
 		$(document).ready(function() {
 			$('.js-example-basic-single').select2();
 		});
-		$("#datepicker").datepicker({ 
-	        autoclose: true, 
-	        todayHighlight: true
-	  }).datepicker();
-		/* swal("KO")  */
-		/*   alert("HI") */
 	});
 </script>
 </html>

@@ -11,6 +11,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table
 public class Registration {
@@ -18,8 +19,6 @@ public class Registration {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer userId;
 
-	@NotEmpty(message = "Con not be empty")
-	/* @Size(min = 1) */
 	private String firstName;
 	private String lastName;
 
@@ -29,7 +28,6 @@ public class Registration {
 
 	private String adharNumber;
 	private String phoneNumber;
-	@Email(message = "emain")
 	private String email;
 
 	private String password;

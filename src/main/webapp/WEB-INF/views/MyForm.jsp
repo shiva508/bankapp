@@ -56,7 +56,13 @@
 <link href="${select2mincss}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-
+<security:authorize access="hasAnyRole('Admin')">
+<p>I AM ADMIN</p>
+</security:authorize>
+<security:authorize access="hasAnyRole('Employee')">
+<p>I AM Employee</p>
+</security:authorize>
 <security:authentication property="principal.username"/>
+<security:authentication property="principal.authorities"/>
 </body>
 </html>

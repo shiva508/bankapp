@@ -13,7 +13,10 @@ public class BankAppSpringSecurityConfig extends WebSecurityConfigurerAdapter {
 @Override
 protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	auth.inMemoryAuthentication()
-	.withUser("shiva").password("{noop}shiva").roles("EMP");
+	.withUser("shiva").password("{noop}shiva").roles("Employee");
+	auth.inMemoryAuthentication()
+	.withUser("shivad").password("{noop}shivad").roles("Admin");
+
 
 }
   @Override

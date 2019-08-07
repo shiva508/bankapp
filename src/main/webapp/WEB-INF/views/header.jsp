@@ -24,8 +24,12 @@
 		});
 		 
 	});
-	function showDrapDown(){
+	function showUserDrapDown(){
 		  $(".users").show();
+	}
+	
+	function showDrapDown(){
+		  $(".admin").show();
 	  }
 </script>
 </head>
@@ -38,15 +42,24 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="${pageContext.request.contextPath }/">Register</a></li>
       <li class="dropdown"><a onclick="showDrapDown()"  class="dropdown-toggle" data-toggle="dropdown" href="#">Admin <span class="caret"></span></a>
-        <ul class="dropdown-menu users" >
+        <ul class="dropdown-menu admin" >
           <li><a href="${pageContext.request.contextPath}/users">Show All Users</a></li>
           <li><a href="#">Page 1-2</a></li>
           <li><a href="#">Page 1-3</a></li>
         </ul>
       </li>
       <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
-    </ul>
+        <li class="dropdown"><a onclick="showUserDrapDown()"  class="dropdown-toggle" data-toggle="dropdown" href="#">User <span class="caret"></span></a>
+        <ul class="dropdown-menu users" >
+          <li><form:form action="${pageContext.request.contextPath }/logout" method="POST">
+      <a  href="#">  <input class="btn btn-success" type="submit" value="LOGOUT"></a>
+      
+    
+      </form:form > </li></li>
+          <li><a href="#">Page 1-2</a></li>
+          <li><a href="#">Page 1-3</a></li>
+        </ul>
+      </li> </ul>
   </div>
 </nav>
 </body>

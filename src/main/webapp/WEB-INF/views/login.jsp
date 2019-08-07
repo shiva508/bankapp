@@ -105,7 +105,7 @@ span.psw {
 }
 
 /* Add Zoom Animation */
-.animate {
+/* .animate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s
 }
@@ -118,7 +118,7 @@ span.psw {
 @keyframes animatezoom {
   from {transform: scale(0)} 
   to {transform: scale(1)}
-}
+} */
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
@@ -131,6 +131,7 @@ span.psw {
   }
 }
 </style>
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <spring:url var="jquery" value="components/js/jquery.min.js"></spring:url>
 <spring:url var="bootstrapminjs" value="components/js/bootstrap.min.js"></spring:url>
 <spring:url var="bootstrapjs" value="components/js/bootstrap.js"></spring:url>
@@ -188,14 +189,24 @@ span.psw {
       <img src="${pageContext.request.contextPath}/components/img_avatar2.png" alt="Avatar" class="avatar">
     </div>
 <c:if test="${param.error!=null }">
-INVALID USER NAME PASSWORD
+<div class="panel panel-danger">
+  <div class="panel-heading">INVALID USER NAME PASSWORD</div>
+</div>
+
+</c:if>
+<c:if test="${param.logout!=null }">
+<div class="panel panel-success">
+  <div class="panel-heading">you have logged out successfuly</div>
+</div>
+
 </c:if>
     <div class="container">
+    <i class="fa fa-user-circle" aria-hidden="true"></i>
       <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="username" required>
-
+      <input type="text" placeholder="Enter Username" name="username" style="width: 347px"  required>
+<br>
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required>
+      <input type="password" placeholder="Enter Password" name="password" style="width: 347px" required>
         
       <button type="submit">Login</button>
       <label>
@@ -204,7 +215,7 @@ INVALID USER NAME PASSWORD
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <!-- <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button> -->
       <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
   </form:form>

@@ -1,8 +1,5 @@
 package com.bank.controller;
 
-
-
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -11,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,6 +41,16 @@ public class LoginController {
 	public String getUser(@PathVariable("userid")Integer userid,Model model) {
 		model.addAttribute("registration",registrationService.getUserByUserId(userid));
 		return "updateuser";
+	}
+	@DeleteMapping("/user/{userid}")
+	public String deleteUser(@PathVariable("userid")Integer userid,Model model) {
+		registrationService.deleteUser(userid);
+		return "updateuser";	
+	}
+	@GetMapping("/user/{userid}")
+	public String viewUser(@PathVariable("userid")Integer userid,Model model) {
+		model.addAttribute("registration",registrationService.getUserByUserId(userid));
+		return "updateuser";	
 	}
 	@PostMapping("/updateUser")
 	public String updateUser(@ModelAttribute("registration") RegistrationForm registration, Model model ) {

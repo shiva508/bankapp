@@ -12,6 +12,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -26,12 +29,18 @@ public class HibernateConfig {
 
 	@Bean
 	public DataSource dataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName(env.getProperty("mysql.driverClassName"));
-		dataSource.setUrl(env.getProperty("mysql.url"));
-		dataSource.setUsername(env.getProperty("mysql.username"));
-		dataSource.setPassword(env.getProperty("mysql.password"));
-		return dataSource;
+		/*
+		 * DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		 * dataSource.setDriverClassName(env.getProperty("mysql.driverClassName"));
+		 * dataSource.setUrl(env.getProperty("mysql.url"));
+		 * dataSource.setUsername(env.getProperty("mysql.username"));
+		 * dataSource.setPassword(env.getProperty("mysql.password")); return dataSource;
+		 */
+		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+		EmbeddedDatabase db = builder
+			.setType(EmbeddedDatabaseType.H2) //.H2 or .DERBY
+			.build();
+		return db;
 	}
 
 	@Bean

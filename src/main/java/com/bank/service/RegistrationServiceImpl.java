@@ -1,5 +1,6 @@
 package com.bank.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,15 @@ public class RegistrationServiceImpl implements RegistrationService {
 	}
 
 	@Transactional
-	public List<Registration> usersList() {
-		
-		return registrationDao.usersList();
+	public List<RegistrationForm> usersList() {
+		List<Registration> registrations=null;
+		registrations=registrationDao.usersList();
+		List<RegistrationForm> registrationForms=new ArrayList<RegistrationForm>();
+		for(Registration registration:registrations) {
+			RegistrationForm registrationForm=formDomineMapperfaced.map(registration, RegistrationForm.class);
+			registrationForms.add(registrationForm);
+		}
+		return registrationForms;
 	}
 
 	@Transactional
@@ -50,6 +57,13 @@ public class RegistrationServiceImpl implements RegistrationService {
 	public RegistrationForm getUserByEmailAndPassword(String username, String password) {
 		RegistrationForm registrationForm=null;
 		Registration registration=registrationDao.getUserByEmailAndPassword(username, password);
+		registrationForm=formDomineMapperfaced.map(registration, RegistrationForm.class);
+		return registrationForm;
+	}
+	@Transactional
+	public RegistrationForm getUserByUserId(Integer userId) {
+		RegistrationForm registrationForm=null;
+		Registration registration=registrationDao.getUserByUserId(userId);
 		registrationForm=formDomineMapperfaced.map(registration, RegistrationForm.class);
 		return registrationForm;
 	}

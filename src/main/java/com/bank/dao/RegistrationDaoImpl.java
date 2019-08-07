@@ -47,4 +47,10 @@ public class RegistrationDaoImpl implements RegistrationDao {
 		return (Registration) query.uniqueResult();
 	}
 
+	public Registration getUserByUserId(Integer userId) {
+		Session session = sessionFactory.getCurrentSession();
+		Registration registration=session.get(Registration.class, userId);
+		return registration;
+	}
+
 }

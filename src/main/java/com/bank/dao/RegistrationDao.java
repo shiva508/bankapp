@@ -10,4 +10,5 @@ public List<Registration> usersList();
 public void updateUser(Registration registration);
 public Integer deleteUser(Integer userid);
 public Registration getUserByEmailAndPassword(String username,String password);
+public Registration getUserByUserId(Integer userId);
 }

@@ -2,6 +2,7 @@ package com.bank.config;
 
 import java.util.Properties;
 
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -26,12 +24,12 @@ public class HibernateConfig {
 	@Autowired
 	private Environment env;
 
-	public BankAppDataSource bankAppDataSource() {
+	/*public BankAppDataSource bankAppDataSource() {
 		BankAppDataSource bankAppDataSource = new BankAppDataSource();
-		bankAppDataSource.setDriverClassName("");
-		bankAppDataSource.setUrl("");
-		bankAppDataSource.setUsername("");
-		bankAppDataSource.setPassword("");
+		bankAppDataSource.setDriverClassName("xzvc");
+		bankAppDataSource.setUrl("dvczx");
+		bankAppDataSource.setUsername("xczv");
+		bankAppDataSource.setPassword("cxvzx");
 		// Query validation should not take place while connection is idle.
 		bankAppDataSource.setTestWhileIdle(false);
 		// To validate connection before it is handed out to the application.
@@ -75,20 +73,32 @@ public class HibernateConfig {
 
 		return bankAppDataSource;
 	}
-
+*/
 	@Bean
 	public DataSource dataSource() {
+		
+		
+		/* DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		  dataSource.setDriverClassName(env.getProperty("mysql.driverClassName"));
+		  dataSource.setUrl(env.getProperty("mysql.url"));
+		  dataSource.setUsername(env.getProperty("mysql.username"));
+		  dataSource.setPassword(env.getProperty("mysql.password")); return dataSource;*/
+		 
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		  dataSource.setDriverClassName(env.getProperty("mysql.driverClassName"));
+		  dataSource.setUrl(env.getProperty("mysql.url"));
+		  dataSource.setUsername(env.getProperty("mysql.username"));
+		  dataSource.setPassword(env.getProperty("mysql.password")); 
+		  return dataSource;
+		
+		
 		/*
-		 * DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		 * dataSource.setDriverClassName(env.getProperty("mysql.driverClassName"));
-		 * dataSource.setUrl(env.getProperty("mysql.url"));
-		 * dataSource.setUsername(env.getProperty("mysql.username"));
-		 * dataSource.setPassword(env.getProperty("mysql.password")); return dataSource;
+		 * EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+		 * EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.H2) // .H2 orDERBY
+		 * .build(); return db;
 		 */
-		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-		EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.H2) // .H2 or .DERBY
-				.build();
-		return db;
+		 
+		 
 	}
 
 	@Bean

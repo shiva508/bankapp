@@ -190,7 +190,7 @@ span.psw {
     </div>
 <c:if test="${param.error!=null }">
 <div class="panel panel-danger">
-  <div class="panel-heading">INVALID USER NAME PASSWORD</div>
+  <div class="panel-heading">${param.error}</div>
 </div>
 
 </c:if>

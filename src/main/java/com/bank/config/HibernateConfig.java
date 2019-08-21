@@ -78,7 +78,7 @@ public class HibernateConfig {
 	}
 */
 	@Bean
-	public DataSource dataSource() {
+	public DataSource securityDataSource() {
 		 
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		  dataSource.setDriverClassName(env.getProperty("mysql.driverClassName"));
@@ -99,7 +99,7 @@ public class HibernateConfig {
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-		sessionFactory.setDataSource(dataSource());
+		sessionFactory.setDataSource(securityDataSource());
 		sessionFactory.setPackagesToScan(new String[] { "com.bank.model" });
 		sessionFactory.setHibernateProperties(hibernateProperties());
 		return sessionFactory;

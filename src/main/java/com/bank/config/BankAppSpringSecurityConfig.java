@@ -21,8 +21,9 @@ public class BankAppSpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	private DataSource dataSource;
 
 	@Override
+	@Autowired
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().passwordEncoder(new BCryptPasswordEncoder()).dataSource(dataSource);
+		auth.jdbcAuthentication().passwordEncoder(passwordEncoder()).dataSource(dataSource);
 	}
 	
 

@@ -1,9 +1,12 @@
 package com.bank.controller;
 
 import javax.servlet.http.HttpServletRequest;
+
 import javax.validation.Valid;
 
-
+import org.apache.logging.log4j.LogManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -26,11 +29,12 @@ import com.bank.service.RegistrationService;
 public class LoginController {
 	@Autowired
 	private RegistrationService registrationService;
-
+	final static Logger logger = LoggerFactory.getLogger(LoginController.class);
 	@GetMapping(value = "/")
 	public String welcomePage(Model model) {
 		RegistrationForm registration = new RegistrationForm();
 		model.addAttribute("registration", registration);
+		logger.info("dsdfjase");
 		return "HomePage";
 	}
 

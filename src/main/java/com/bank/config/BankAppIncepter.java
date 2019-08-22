@@ -33,7 +33,6 @@ public class BankAppIncepter extends HandlerInterceptorAdapter {
 				if(user !=null) {
 					session.setAttribute("user", user);	
 				}
-				
 			}	
 		}
 		

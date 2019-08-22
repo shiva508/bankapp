@@ -1,4 +1,4 @@
-package com.bank.controller;
+package com.bank.exception;
 
 public class UserResponse {
 private String response;

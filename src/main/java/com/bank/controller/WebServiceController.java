@@ -1,8 +1,5 @@
 package com.bank.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bank.exception.UserExceprtion;
+import com.bank.exception.UserResponse;
 import com.bank.formmodel.RegistrationForm;
 import com.bank.service.RegistrationService;
 

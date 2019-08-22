@@ -143,7 +143,7 @@
   </ul>
    <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
-      <h2>Mike Ross, Manager</h2>
+      <h2>Mike Ross, Manager ${user.email}</h2>
       <p>Man, we've been on the road for some time now. Looking forward to lorem ipsum.</p>
     </div>
     <div id="menu1" class="tab-pane fade">

@@ -25,8 +25,8 @@ public class BankWebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		String[] pathPatterns = { "/components/**", "/css/**", "/js/**"};
-		String[] resourceLocations = {"/components/", "/css/", "/js/"};
+		String[] pathPatterns = { "/components/**", "/css/**", "/js/**","/images/**"};
+		String[] resourceLocations = {"/components/", "/css/", "/js/","/images/"};
 		registry.addResourceHandler(pathPatterns).addResourceLocations(resourceLocations);
 	}
 }

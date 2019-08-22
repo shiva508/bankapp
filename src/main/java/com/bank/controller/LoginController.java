@@ -31,7 +31,7 @@ public class LoginController {
 	public String welcomePage(Model model) {
 		RegistrationForm registration = new RegistrationForm();
 		model.addAttribute("registration", registration);
-		return "welcome";
+		return "HomePage";
 	}
 
 	@GetMapping("/users")

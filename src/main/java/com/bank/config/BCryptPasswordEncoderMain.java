@@ -10,5 +10,4 @@ public class BCryptPasswordEncoderMain {
 		System.out.println(encoded);
 		
 	}
-
 }

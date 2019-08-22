@@ -5,6 +5,7 @@ import javax.validation.Valid;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bank.formmodel.Login;
 import com.bank.formmodel.RegistrationForm;
@@ -47,10 +49,11 @@ public class LoginController {
 		registrationService.deleteUser(userid);
 		return "redirect:/users";	
 	}
-	@GetMapping("/viewuser/{userid}")
-	public String viewUser(@PathVariable("userid")Integer userid,Model model) {
-		model.addAttribute("user",registrationService.getUserByUserId(userid));
-		return "viewUser";	
+	@GetMapping(path="/viewuser/{userid}",produces = { MediaType.APPLICATION_XML_VALUE})
+	@ResponseBody
+	public RegistrationForm viewUser(@PathVariable("userid")Integer userid,Model model) {
+		//model.addAttribute("user",registrationService.getUserByUserId(userid));
+		return registrationService.getUserByUserId(userid);	
 	}
 	@PostMapping("/updateUser")
 	public String updateUser(@ModelAttribute("registration") RegistrationForm registration, Model model ) {

@@ -33,10 +33,12 @@ public class RegistrationDaoImpl implements RegistrationDao {
 	public Integer deleteUser(Integer userid) {
 		Session session = sessionFactory.getCurrentSession();
 		Registration registration = session.get(Registration.class, userid);
+		int deleteid=0;
 		if (registration != null) {
+			deleteid=registration.getUserId();
 			session.delete(registration);
 		}
-		return userid;
+		return deleteid;
 	}
 
 	public Registration getUserByEmailAndPassword(String username, String password) {

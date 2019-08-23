@@ -15,6 +15,9 @@
 		<mysql.connector.version>8.0.11</mysql.connector.version>
 		<spring-security.version>5.0.6.RELEASE</spring-security.version>
 		<com.fasterxml.version>2.9.4</com.fasterxml.version>
+		<orika-version>1.5.1</orika-version>
+		<java-nail-api>1.5.5</java-nail-api>
+		<java-mail>1.4.3</java-mail>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -132,7 +135,7 @@
 		<dependency>
 			<groupId>ma.glasnost.orika</groupId>
 			<artifactId>orika-core</artifactId>
-			<version>1.5.1</version>
+			<version>${orika-version}</version>
 		</dependency>
 
 		<dependency>
@@ -187,12 +190,12 @@
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>javax.mail-api</artifactId>
-			<version>1.5.5</version>
+			<version>${java-nail-api}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
-			<version>1.4.3</version>
+			<version>${java-mail}</version>
 		</dependency>
 
 		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-c3p0</artifactId> 

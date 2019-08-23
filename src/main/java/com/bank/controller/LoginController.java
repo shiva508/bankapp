@@ -3,12 +3,15 @@ package com.bank.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import javax.validation.Valid;
+import javax.validation.ValidationException;
 
 import org.apache.logging.log4j.LogManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,53 +20,72 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bank.config.EmailCfg;
 import com.bank.formmodel.Login;
 import com.bank.formmodel.RegistrationForm;
+import com.bank.model.Feedback;
 import com.bank.model.Registration;
+import com.bank.model.User;
+import com.bank.service.MailService;
 import com.bank.service.RegistrationService;
 
 @Controller
 public class LoginController {
 	@Autowired
 	private RegistrationService registrationService;
+	@Autowired
+	private MailService mailService; 
 	final static Logger logger = LoggerFactory.getLogger(LoginController.class);
+
 	@GetMapping(value = "/")
-	public String welcomePage(Model model) {
+	public String welcomePage(Model model,HttpServletRequest request) {
+		User user=(User) request.getSession().getAttribute("user");
 		RegistrationForm registration = new RegistrationForm();
 		model.addAttribute("registration", registration);
 		logger.info("dsdfjase");
+		Feedback feedback=new Feedback();
+		feedback.setEmail(user.getEmail());
+		feedback.setName(user.getFirstName());
+		feedback.setFeedback("Y Have loggged in");
+		mailService.sendFeedback(feedback);
 		return "HomePage";
 	}
 
 	@GetMapping("/users")
 	public String usersList(Model model) {
-		model.addAttribute("users",registrationService.usersList());
+		model.addAttribute("users", registrationService.usersList());
 		return "usersList";
 	}
+
 	@GetMapping("/user/{userid}")
-	public String getUser(@PathVariable("userid")Integer userid,Model model) {
-		model.addAttribute("registration",registrationService.getUserByUserId(userid));
+	public String getUser(@PathVariable("userid") Integer userid, Model model) {
+		model.addAttribute("registration", registrationService.getUserByUserId(userid));
 		return "updateuser";
 	}
+
 	@GetMapping("/deleteuser/{userid}")
-	public String deleteUser(@PathVariable("userid")Integer userid,Model model) {
+	public String deleteUser(@PathVariable("userid") Integer userid, Model model) {
 		registrationService.deleteUser(userid);
-		return "redirect:/users";	
+		return "redirect:/users";
 	}
-	@GetMapping(path="/viewuser/{userid}",produces = { MediaType.APPLICATION_XML_VALUE})
+
+	@GetMapping(path = "/viewuser/{userid}", produces = { MediaType.APPLICATION_XML_VALUE })
 	@ResponseBody
-	public RegistrationForm viewUser(@PathVariable("userid")Integer userid,Model model) {
-		//model.addAttribute("user",registrationService.getUserByUserId(userid));
-		return registrationService.getUserByUserId(userid);	
+	public RegistrationForm viewUser(@PathVariable("userid") Integer userid, Model model) {
+		// model.addAttribute("user",registrationService.getUserByUserId(userid));
+		return registrationService.getUserByUserId(userid);
 	}
+
 	@PostMapping("/updateUser")
-	public String updateUser(@ModelAttribute("registration") RegistrationForm registration, Model model ) {
+	public String updateUser(@ModelAttribute("registration") RegistrationForm registration, Model model) {
 		registrationService.updateUser(registration);
 		return "redirect:/users";
 	}
+
 	@PostMapping("/formregistration")
 	public String registration(@Valid @ModelAttribute("registration") RegistrationForm registration, Model model,
 			BindingResult result) {
@@ -95,4 +117,6 @@ public class LoginController {
 		model.addAttribute("myName", myName);
 		return "ParamExe";
 	}
+
+
 }

@@ -39,7 +39,9 @@
 <title>Registration Form</title>
 </head>
 <body>
+	<jsp:include page="header.jsp" flush="true"></jsp:include>
 	<div class="container">
+
 		<div class="row">
 			<h1>Registration Form</h1>
 		</div>

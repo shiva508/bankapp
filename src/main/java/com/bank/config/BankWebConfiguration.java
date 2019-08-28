@@ -24,7 +24,7 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = "com.bank")
 /*@EnableCaching*/
 public class BankWebConfiguration extends WebMvcConfigurerAdapter {
-	@Autowired
+	@Autowired //hsdasgdfgafqwtyaery
 	private BankAppIncepter bankAppIncepter;
 	@Bean
 	public ViewResolver viewResolver() {

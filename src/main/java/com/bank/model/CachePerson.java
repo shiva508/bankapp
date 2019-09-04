@@ -19,6 +19,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 	@NamedQuery(name="GET_ALL_PERSONS",query="from CachePerson")
 })
 public class CachePerson {
+	//dasdfyusguf
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cachePersonId;

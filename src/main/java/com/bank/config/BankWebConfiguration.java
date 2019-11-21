@@ -17,15 +17,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-
-
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.bank")
-/*@EnableCaching*/
+@EnableCaching
 public class BankWebConfiguration extends WebMvcConfigurerAdapter {
-	@Autowired //hsdasgdfgafqwtyaery
+	@Autowired
 	private BankAppIncepter bankAppIncepter;
+
 	@Bean
 	public ViewResolver viewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -37,23 +36,26 @@ public class BankWebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		String[] pathPatterns = { "/components/**", "/css/**", "/js/**","/images/**"};
-		String[] resourceLocations = {"/components/", "/css/", "/js/","/images/"};
+		String[] pathPatterns = { "/components/**", "/css/**", "/js/**", "/images/**" };
+		String[] resourceLocations = { "/components/", "/css/", "/js/", "/images/" };
 		registry.addResourceHandler(pathPatterns).addResourceLocations(resourceLocations);
 	}
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(bankAppIncepter);
 	}
-	/*@Bean
+
+	@Bean
 	public EhCacheManagerFactoryBean managerFactoryBean() {
-		EhCacheManagerFactoryBean factoryBean=new EhCacheManagerFactoryBean();
+		EhCacheManagerFactoryBean factoryBean = new EhCacheManagerFactoryBean();
 		factoryBean.setConfigLocation(new ClassPathResource("ehcache.xml"));
 		factoryBean.setShared(true);
 		return factoryBean;
 	}
+
 	@Bean
-	public CacheManager  cacheManager() {
+	public CacheManager cacheManager() {
 		return new EhCacheCacheManager(managerFactoryBean().getObject());
-	}*/
+	}
 }

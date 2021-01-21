@@ -13,7 +13,7 @@
 		<hibernate.version>5.3.8.Final</hibernate.version>
 		<mysql.connector.version>8.0.11</mysql.connector.version>
 		<spring-security.version>5.0.6.RELEASE</spring-security.version>
-		<com.fasterxml.version>2.9.4</com.fasterxml.version>
+		<com.fasterxml.version>2.12.1</com.fasterxml.version>
 		<orika-version>1.5.1</orika-version>
 		<java-nail-api>1.5.5</java-nail-api>
 		<java-mail>1.4.3</java-mail>
